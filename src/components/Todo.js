@@ -1,5 +1,6 @@
 import React , {Component} from 'react';
-import { StyleSheet , View, Text,TextInput,TouchableOpacity } from 'react-native';
+import { StyleSheet , View, Text,TextInput,TouchableOpacity ,FlatList} from 'react-native';
+import Input from './components/input/Input';
 
 export default class Todo extends Component{
     constructor(){
@@ -42,20 +43,27 @@ export default class Todo extends Component{
     renderList = () => {
         let { todos } = this.state;
         if(todos.length){
+
+        //   return  <FlatList
+        //         data={[{key: 'a'}, {key: 'b'}]}
+        //         renderItem={({item}) => <Text >{item.key}</Text>}
+        //         />
+       
+
             return todos.map((todo ,index)=>{
-                return <View key={index} style={{flexDirection:'row'}}>
-                    <Text >{todo}</Text>
-                    <TouchableOpacity
-                        onPress = {()=>this.deleteIt(index)}
-                        style = {{backgroundColor:'#ff0000',width:80,height:30,paddingLeft:15}}>
-                        <Text style={{color:'white'}}>Delete</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress = {()=>this.onEditBtnPress(index)}
-                        style = {{backgroundColor:'#00ff00',width:80,height:30,paddingLeft:15}}>
-                        <Text style={{color:'white'}}>Edit</Text>
-                    </TouchableOpacity>
-                </View> })
+               return <View key={index} style={{flexDirection:'row'}}>
+                   <Text >{todo}</Text>
+                   <TouchableOpacity
+                       onPress = {()=>this.deleteIt(index)}
+                       style = {{backgroundColor:'#ff0000',width:80,height:30,paddingLeft:15}}>
+                       <Text style={{color:'white'}}>Delete</Text>
+                   </TouchableOpacity>
+                   <TouchableOpacity
+                       onPress = {()=>this.onEditBtnPress(index)}
+                       style = {{backgroundColor:'#00ff00',width:80,height:30,paddingLeft:15}}>
+                       <Text style={{color:'white'}}>Edit</Text>
+                   </TouchableOpacity>
+               </View> })
         }
         else{
             return <View><Text>Empty Array</Text></View>
@@ -65,10 +73,11 @@ export default class Todo extends Component{
         let { todos,text,flag } = this.state;
         return(
             <View>
-                <TextInput
+                {/* <TextInput
                     value={text}
                     placeholder = 'Add your todo here'
-                    onChangeText = {this.onTextChange}/>
+                    onChangeText = {this.onTextChange}/> */}
+     <Input textValue = {text} _placeholder={'Add your todo'} _onChangeText={this.onTextChange}/>
                 <TouchableOpacity style ={styles.button}
                                   onPress = {flag?this.edit:this.onAddBtnPress}>
                     <Text >{flag?'Edit':'Add'}</Text>
