@@ -1,15 +1,19 @@
 import React from 'react';
 import { TouchableOpacity , Text } from 'react-native';
-import ButtonStyle from './ButtonStyle'
+import  ButtonStyle  from './ButtonStyle'
 
 
 
-export default const Button = ({ text , type }) => {
+export const Button = ({ text , type ,_onPress,flag}) => {
+    let{ addButton , deleteButton , updateButton, customFont } = ButtonStyle;
 return (
     <TouchableOpacity
+        onPress= {_onPress}
         style = {
-            type == 'add' ? ButtonStyle.addBtnBG:}>
-        <Text>{text}</Text>
+            type == 'add' ?  addButton
+            : type == 'delete' ? deleteButton
+            : type == 'edit' ? updateButton   : undefined}>
+        <Text style={customFont}>{type.toLowerCase() =='add'?( flag ? 'Edit':'Add' ) : text}</Text>
     </TouchableOpacity>
 );
 };

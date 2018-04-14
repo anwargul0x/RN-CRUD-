@@ -13,5 +13,5 @@ render(){
 }
 
 
-AppRegistry.registerComponent('Todo', () => App);
+
 

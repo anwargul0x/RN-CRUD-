@@ -1,10 +1,10 @@
 import React  from 'react';
 import {View, TextInput,StyleSheet} from 'react-native';
-import InputStyle from './InputStyle';
+import {InputStyle} from './InputStyle';
 
-export default const Input = ({ textValue, _placeholder, _onChangeText,}) => {
+ const Input = ({ textValue, _placeholder, _onChangeText,}) => {
 return(
-    <View 
+    <View
         style={InputStyle.view}>
      <TextInput
                     value={textValue}
@@ -13,3 +13,4 @@ return(
     </View>
 );
 };
+export default Input;

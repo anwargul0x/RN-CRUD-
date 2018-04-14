@@ -1,9 +1,10 @@
-import { StyleSheet } from 'react-native';
+import EStyleSheet  from 'react-native-extended-stylesheet';
 
-export default const InputStyle = StyleSheet. create({
+export const InputStyle = EStyleSheet. create({
     view:{
         padding:10,
-        borderWidth:1
+        borderWidth:1,
+        backgroundColor:"#e5e5e5"
         }
 
 });
